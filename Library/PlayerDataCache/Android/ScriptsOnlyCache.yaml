@@ -592,4 +592,4 @@ ScriptsOnlyBuild:
   platform: 13
   scenePathNames:
   - Assets/scenes/menu.unity
-  playerPath: /home/ratan/Flappy-bird/flappyBird.apk
+  playerPath: /home/ratan/Flappy-bird/Flappy Bird.apk
