@@ -5,6 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class TapController : MonoBehaviour {
 
+	public Animator anim;
+
+
 	public delegate void PlayerDelegate();
 	public static event PlayerDelegate OnPlayerDied;
 	public static event PlayerDelegate OnPlayerScored;
@@ -24,6 +27,8 @@ public class TapController : MonoBehaviour {
 	TrailRenderer trail;
 
 	void Start() {
+		 anim = gameObject.GetComponent<Animator>();
+
 		rigidBody = GetComponent<Rigidbody2D>();
 		downRotation = Quaternion.Euler(0, 0 ,-100);
 		forwardRotation = Quaternion.Euler(0, 0, 40);
@@ -54,9 +59,12 @@ public class TapController : MonoBehaviour {
 	}
 
 	void Update() {
+		
 		if (game.GameOver) return;
+		
 
 		if (Input.GetMouseButtonDown(0)) {
+			anim.Play("birdAnim");
 			rigidBody.velocity = Vector2.zero;
 			transform.rotation = forwardRotation;
 			rigidBody.AddForce(Vector2.up * tapForce, ForceMode2D.Force);
